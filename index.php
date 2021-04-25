@@ -34,6 +34,6 @@ if (file_exists($file)) {
         $app = new $ctrClass();
     }
     if (method_exists($app, $action)) {
-        $app->$action(array_slice($params, 2, sizeof($params) - 1));
+        $app->$action(...array_slice($params, 2, sizeof($params) - 1));
     }
 }
