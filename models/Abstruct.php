@@ -153,4 +153,12 @@ class Abstruct
 
         $this->errors =  $result->errorInfo();
     }
+
+    public function query($qruey, $fetchConstant = PDO::FETCH_ASSOC)
+    {
+        $result = $this->cnx->prepare($qruey);
+        $result->execute();
+        $this->result = $result->fetchAll($fetchConstant);
+        $this->errors =  $result->errorInfo();
+    }
 }

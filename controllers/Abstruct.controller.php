@@ -6,8 +6,9 @@ abstract class AbstructController
 
     use Http;
 
-    protected function view(string $file)
+    protected function view(string $file, $data = [])
     {
+        extract($data);
         $path = BASE_PATH . "views/" . $file . ".php";
         if (file_exists($path)) {
             require_once $path;
