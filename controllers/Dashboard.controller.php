@@ -22,10 +22,19 @@ class DashboardController extends AbstructController
 
     public function group()
     {
-        $group = new Group();
-        $group->query("SELECT * FROM groupe");
+        $obj = new Group();
+        $obj->query("SELECT * FROM groupe");
 
 
-        $this->view("group", ["data" => $group->result]);
+        $this->view("group", ["data" => $obj->result]);
+    }
+
+    public function matiere()
+    {
+        $obj = new Matiere();
+        $obj->query("SELECT * FROM matiere");
+
+
+        $this->view("matiere", ["data" => $obj->result]);
     }
 }
