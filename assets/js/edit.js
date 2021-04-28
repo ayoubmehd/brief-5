@@ -39,5 +39,5 @@ function editButtonsClick(event) {
 // Reset edit form
 function resetEditForm(event) {
   event.preventDefault();
-  showGroup(tbody);
+  show(tbody, endpoint, filds);
 }
