@@ -16,6 +16,9 @@
                         <li class="nav-item">
                             <a href="/dashboard/matiere" class="nav-link text-white">Matiere</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/dashboard/salle" class="nav-link text-white">Salle</a>
+                        </li>
                         <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                         <div class="dropdown-menu bg-dark">

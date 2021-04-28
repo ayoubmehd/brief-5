@@ -48,8 +48,7 @@ class ApiController extends AbstructController
         return $this->redirect("/dashboard/group");
     }
 
-
-    // Crud Group
+    // Crud Matiere
     public function matiere_all()
     {
         $obj = new Matiere();
@@ -91,5 +90,55 @@ class ApiController extends AbstructController
         ], "id = $id");
 
         return $this->redirect("/dashboard/matiere");
+    }
+
+
+    // Crud Salle
+    public function salle_all()
+    {
+        $obj = new Salle();
+        $obj->query("SELECT * FROM salle");
+
+
+        echo json_encode(["data" => $obj->result]);
+    }
+
+    public function add_salle()
+    {
+        if (!isset($_POST["add"])) return;
+
+        $libelle = $_POST["libelle"];
+        $capacite = $_POST["capacite"];
+        $obj = new Salle();
+        $obj->insert([
+            "libelle" => $libelle,
+            "capacite" => $capacite,
+        ]);
+
+        return $this->redirect("/dashboard/salle");
+    }
+
+    public function delete_salle($id)
+    {
+        $obj = new Salle();
+        $obj->delete("id = $id");
+
+        return $this->redirect("/dashboard/salle");
+    }
+
+    public function edit_salle($id)
+    {
+        if (!isset($_POST["edit"])) return;
+
+        $libelle = $_POST["libelle"];
+        $capacite = $_POST["capacite"];
+        $obj = new Salle();
+
+        $obj->update([
+            "libelle" => $libelle,
+            "capacite" => $capacite,
+        ], "id = $id");
+
+        return $this->redirect("/dashboard/salle");
     }
 }

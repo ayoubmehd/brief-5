@@ -37,4 +37,12 @@ class DashboardController extends AbstructController
 
         $this->view("matiere", ["data" => $obj->result]);
     }
+
+    public function salle()
+    {
+        $obj = new Salle();
+        $obj->query("SELECT * FROM salle");
+
+        $this->view("salle", ["data" => $obj->result]);
+    }
 }
