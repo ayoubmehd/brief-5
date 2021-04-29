@@ -120,11 +120,12 @@ class Abstruct
 
     public function update($data, $where)
     {
-        $update = $this->updateQuery($data, $where);
+        $where = $this->whereQuery($where);
+        $update = $this->updateQuery($data, $where["qruey_string"]);
         extract($update);
 
         $result =  $this->cnx->prepare($qruey);
-        $result->execute($values);
+        $result->execute(array_merge($values, $where["values"]));
 
         $this->errors =  $result->errorInfo();
     }
@@ -160,5 +161,10 @@ class Abstruct
         $result->execute();
         $this->result = $result->fetchAll($fetchConstant);
         $this->errors =  $result->errorInfo();
+    }
+
+    public function getLastInsertId()
+    {
+        return $this->cnx->lastInsertId();
     }
 }

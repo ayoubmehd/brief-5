@@ -54,8 +54,25 @@ class DashboardController extends AbstructController
 
         $this->view("suiver", ["data" => $obj->result]);
     }
+
     public function add_suiver()
     {
         $this->view("add_suiver");
+    }
+
+    public function profile()
+    {
+        $id = $this->userid();
+
+        $obj = new Ensegniant();
+        $obj->query("SELECT * FROM ensegniant INNER JOIN matiere ON matiere.id = ensegniant.Matiere_id WHERE ensegniant.id IN (SELECT Ensegniant_id FROM user WHERE id = $id)");
+
+        $mat = new Matiere();
+        $mat->query("SELECT * FROM matiere");
+
+        $this->view("profile", [
+            "data" => $obj->result,
+            "matiere" => $mat->result
+        ]);
     }
 }
