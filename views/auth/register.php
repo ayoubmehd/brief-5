@@ -11,8 +11,8 @@
                 <div class="card-body">
                     <form action="<?php echo BASE_URL ?>/auth/do_register" method="POST">
                         <div class="form-group">
-                            <label for="fullname">Fullname</label>
-                            <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Fullname">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
