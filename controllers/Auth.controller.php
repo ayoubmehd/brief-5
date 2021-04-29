@@ -169,7 +169,7 @@ class AuthController extends AbstructController
             return $this->redirect("/dashboard");
         }
 
-        return $this->redirect("/profile");
+        return $this->redirect("/dashboard");
     }
 
     public function do_register()
@@ -177,22 +177,22 @@ class AuthController extends AbstructController
 
         if (!isset($_POST['register'])) return;
 
-        $fullname = $_POST['fullname'];
+        $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
 
         $this->user  = new User();
 
         $this->user->insert([
-            "full_name" => $fullname,
+            "username" => $username,
             "email" => $email,
-            // "password" => $password,
             "password" => $this->hash_password($password),
+            "role" => "user",
         ]);
 
         $this->errorHandling("/register");
 
-        $this->redirect("/login");
+        $this->redirect("/auth/login");
     }
 
     private function hash_password($password)
