@@ -141,4 +141,70 @@ class ApiController extends AbstructController
 
         return $this->redirect("/dashboard/salle");
     }
+
+
+    // Crud Salle
+    public function suiver_all()
+    {
+        $obj = new Suiver();
+        $obj->query("SELECT * FROM suiver");
+
+
+        echo json_encode(["data" => $obj->result]);
+    }
+
+    public function add_suiver()
+    {
+        if (!isset($_POST["add"])) return;
+        $Ensegniant_id = $_POST["Ensegniant_id"];
+        $Groupe_id = $_POST["Groupe_id"];
+        $Salle_id = $_POST["Salle_id"];
+        $jour = $_POST["jour"];
+        $de = $_POST["de"];
+        $a = $_POST["a"];
+        $obj = new Suiver();
+        $obj->insert([
+            "Ensegniant_id" => $Ensegniant_id,
+            "Groupe_id" => $Groupe_id,
+            "Salle_id" => $Salle_id,
+            "jour" => $jour,
+            "de" => $de,
+            "a" => $a,
+        ]);
+
+        return $this->redirect("/dashboard/suiver");
+    }
+
+    public function delete_suiver($id)
+    {
+        $obj = new Salle();
+        $obj->delete("id = $id");
+
+        return $this->redirect("/dashboard/salle");
+    }
+
+    public function edit_suiver($id)
+    {
+        if (!isset($_POST["edit"])) return;
+
+        $libelle = $_POST["libelle"];
+        $capacite = $_POST["capacite"];
+        $obj = new Salle();
+
+        $obj->update([
+            "libelle" => $libelle,
+            "capacite" => $capacite,
+        ], "id = $id");
+
+        return $this->redirect("/dashboard/salle");
+    }
+
+    public function ensegniant_all()
+    {
+        $obj = new Suiver();
+        $obj->query("SELECT * FROM ensegniant");
+
+
+        echo json_encode(["data" => $obj->result]);
+    }
 }

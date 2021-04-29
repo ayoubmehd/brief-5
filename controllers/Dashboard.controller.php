@@ -45,4 +45,17 @@ class DashboardController extends AbstructController
 
         $this->view("salle", ["data" => $obj->result]);
     }
+
+
+    public function suiver()
+    {
+        $obj = new Suiver();
+        $obj->query("SELECT * FROM suiver");
+
+        $this->view("suiver", ["data" => $obj->result]);
+    }
+    public function add_suiver()
+    {
+        $this->view("add_suiver");
+    }
 }
