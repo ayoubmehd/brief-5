@@ -103,6 +103,17 @@ class ApiController extends AbstructController
         echo json_encode(["data" => $obj->result]);
     }
 
+    public function salle_aviable()
+    {
+        $jour = $_GET["jour"];
+        $de = $_GET["de"];
+        $obj = new Salle();
+        $obj->query("SELECT * FROM salle WHERE id NOT IN (SELECT Salle_id FROM suiver WHERE jour = $jour AND de = '$de')");
+
+
+        echo json_encode(["data" => $obj->result]);
+    }
+
     public function add_salle()
     {
         if (!isset($_POST["add"])) return;
@@ -163,6 +174,10 @@ class ApiController extends AbstructController
         $de = $_POST["de"];
         $a = $_POST["a"];
         $obj = new Suiver();
+
+        // echo "<pre>";
+        // var_dump($_POST);
+        // echo "</pre>";
         $obj->insert([
             "Ensegniant_id" => $Ensegniant_id,
             "Groupe_id" => $Groupe_id,
@@ -172,6 +187,9 @@ class ApiController extends AbstructController
             "a" => $a,
         ]);
 
+        // echo "<pre>";
+        // var_dump($obj->errors);
+        // echo "</pre>";
         return $this->redirect("/dashboard/suiver");
     }
 

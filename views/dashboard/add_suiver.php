@@ -6,21 +6,21 @@
          <form id="addForm" action="<?php echo BASE_URL ?>/api/add_suiver" method="POST" class="form">
 
              <div class="form-group">
-                 <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#choix">Group</button>
-                 <input type="hidden" name="Groupe_id" id="group_id">
+                 <label for="group">Group</label>
+                 <select class="form-control" name="Groupe_id" id="group">
+                     <option value="-1" disabled selected>Group</option>
+                 </select>
              </div>
              <div class="form-group">
-                 <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#choix">Ensegniant</button>
-                 <input type="hidden" name="Ensegniant_id" id="matiere_id">
+                 <label for="ensegniant">Ensegniant</label>
+                 <select class="form-control" name="Ensegniant_id" id="ensegniant">
+                     <option value="-1" disabled selected>Ensegniant</option>
+                 </select>
              </div>
              <div class="form-group">
-                 <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#choix">Salle</button>
-                 <input type="hidden" name="Salle_id" id="salle_id">
-             </div>
-             <div class="form-group">
-                 <label for="capacite">jour</label>
-                 <select class="form-control" name="" id="">
-                     <option value="-1">Jour</option>
+                 <label for="jour">jour</label>
+                 <select class="form-control" name="jour" id="jour">
+                     <option value="-1" disabled selected>Jour</option>
                      <option value="1">Monday</option>
                      <option value="2">Tuesday</option>
                      <option value="3">Wednesday</option>
@@ -29,9 +29,9 @@
                  </select>
              </div>
              <div class="form-group">
-                 <label for="capacite">de</label>
-                 <select class="form-control" name="" id="">
-                     <option value="-1">de</option>
+                 <label for="de">de</label>
+                 <select class="form-control" name="de" id="de">
+                     <option value="-1" disabled selected>de</option>
                      <option value="8:00">8:00</option>
                      <option value="9:00">9:00</option>
                      <option value="10:00">10:00</option>
@@ -45,9 +45,9 @@
                  </select>
              </div>
              <div class="form-group">
-                 <label for="capacite">a</label>
-                 <select class="form-control" name="" id="">
-                     <option value="-1">a</option>
+                 <label for="a">a</label>
+                 <select class="form-control" name="a" id="a">
+                     <option value="-1" disabled selected>a</option>
                      <option value="8:00">8:00</option>
                      <option value="9:00">9:00</option>
                      <option value="10:00">10:00</option>
@@ -58,6 +58,12 @@
                      <option value="16:00">16:00</option>
                      <option value="17:00">17:00</option>
                      <option value="18:00">18:00</option>
+                 </select>
+             </div>
+             <div class="form-group">
+                 <label for="salle">Salle</label>
+                 <select class="form-control" name="Salle_id" id="salle">
+                     <option value="-1" disabled selected>salle</option>
                  </select>
              </div>
              <div class="form-group">
@@ -67,22 +73,7 @@
 
          </form>
 
-         <!-- Modal -->
-         <div class="modal fade" id="choix" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                 <div class="modal-content">
-                     <div class="modal-header">
-                         <h5 class="modal-title">Modal title</h5>
-                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                             <span aria-hidden="true">&times;</span>
-                         </button>
-                     </div>
-                     <div class="modal-body">
-                         <form id="modelForm"></form>
-                     </div>
-                 </div>
-             </div>
-         </div>
+
      </div>
 
      <script src="<?php echo BASE_URL ?>/assets/js/fetch.js"></script>

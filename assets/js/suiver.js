@@ -1,62 +1,50 @@
-const buttons = document.querySelectorAll('[data-target="#choix"]');
-const choixModel = document.querySelector("#choix");
+const group = document.querySelector("#group");
+const ensegniant = document.querySelector("#ensegniant");
+const salle = document.querySelector("#salle");
+const jour = document.querySelector("#jour");
+const de = document.querySelector("#de");
 
-Array.from(buttons).forEach((button) => {
-  button.addEventListener("click", values);
-});
-/**
- *
- * @param {event} event
- */
-async function values(event) {
-  const button = event.target.closest("button");
-  choixModel.querySelector(
-    ".modal-title"
-  ).textContent = `Choise a ${button.textContent}`;
-  const modelForm = document.querySelector("#modelForm");
-  console.log(modelForm);
-  modelForm.innerHTML = "";
-  const data = await fetchElm(`${button.textContent.toLowerCase()}_all`);
-  display(data.data, button.textContent.toLowerCase(), modelForm);
+jour.addEventListener("change", getSalls);
+de.addEventListener("change", getSalls);
+
+async function main() {
+  const group_all = await fetchElm("group_all");
+  const ensegniant_all = await fetchElm("ensegniant_all");
+
+  group_all.data.forEach((element) => {
+    const option = document.createElement("option");
+
+    option.value = element.id;
+    option.textContent = element.effecrif;
+
+    group.appendChild(option);
+  });
+  ensegniant_all.data.forEach((element) => {
+    const option = document.createElement("option");
+
+    option.value = element.id;
+    option.textContent = element.nom;
+
+    ensegniant.appendChild(option);
+  });
 }
 
-function display(data = [], type, modelForm) {
-  modelForm.innerHTML = data.reduce(
-    (acc, val, index) => `${acc}${input(type, val, index)}`,
-    ""
+main();
+
+async function getSalls() {
+  if (jour.value == -1) return;
+  if (de.value == -1) return;
+
+  const salle_data = await fetchElm(
+    `salle_aviable/?jour=${jour.value}&de=${encodeURIComponent(de.value)}`
   );
-}
 
-function input(type, val, index) {
-  let filds = [];
+  salle_data.data.forEach((element) => {
+    const option = document.createElement("option");
 
-  if (type === "group") {
-    filds = ["effecrif"];
-  } else if (type === "matiere") {
-    filds = ["Matiere_label"];
-  } else {
-    filds = ["libelle"];
-  }
-  return `
-    <div class="input-group w-100 mb-3">
-      <div class="input-group-prepend">
-        <div class="input-group-text">
-          <input id="${type}_${index}" name="${type}"
-          value="
-          ${
-            val.id
-          }" onchange="choiseFrom(event, '${type}')" type="radio" aria-label="Checkbox for following text input">
-        </div>
-      </div>
-      <label class="input-group-text" for="${type}_${index}">${
-    val[filds[0]]
-  }</label>
-    </div>
-  `;
-}
+    option.value = element.id;
+    option.textContent = element.libelle;
 
-function choiseFrom(event, type) {
-  $("#choix").modal("hide");
-  document.querySelector(`#${type}_id`).value = parseInt(event.target.value);
-  console.log(parseInt(event.target.value));
+    salle.appendChild(option);
+  });
 }
