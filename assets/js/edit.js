@@ -29,11 +29,10 @@ function editButtonsClick(event) {
     input.type = "text";
     input.value = elm.textContent;
     input.setAttribute("form", "editForm");
-    input.name = addForm[index].name;
+    input.name = filds[index];
     elm.innerHTML = "";
     elm.appendChild(input);
   });
-  //   console.log();
 }
 
 // Reset edit form
