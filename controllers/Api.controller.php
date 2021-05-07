@@ -175,9 +175,6 @@ class ApiController extends AbstructController
         $a = $_POST["a"];
         $obj = new Suiver();
 
-        // echo "<pre>";
-        // var_dump($_POST);
-        // echo "</pre>";
         $obj->insert([
             "Ensegniant_id" => $Ensegniant_id,
             "Groupe_id" => $Groupe_id,
@@ -205,16 +202,24 @@ class ApiController extends AbstructController
     {
         if (!isset($_POST["edit"])) return;
 
-        $libelle = $_POST["libelle"];
-        $capacite = $_POST["capacite"];
-        $obj = new Salle();
+        $Ensegniant_id = $_POST["Ensegniant_id"];
+        $Groupe_id = $_POST["Groupe_id"];
+        $Salle_id = $_POST["Salle_id"];
+        $jour = $_POST["jour"];
+        $de = $_POST["de"];
+        $a = $_POST["a"];
+        $obj = new Suiver();
 
         $obj->update([
-            "libelle" => $libelle,
-            "capacite" => $capacite,
-        ], "id = $id");
+            "Ensegniant_id" => $Ensegniant_id,
+            "Groupe_id" => $Groupe_id,
+            "Salle_id" => $Salle_id,
+            "jour" => $jour,
+            "de" => $de,
+            "a" => $a
+        ], ["id" => $id]);
 
-        return $this->redirect("/dashboard/salle");
+        return $this->redirect("/dashboard/suiver");
     }
 
     public function ensegniant_all()

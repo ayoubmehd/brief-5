@@ -7,7 +7,7 @@
         </div>
         <div class="w-80">
             <form id="editForm" action="<?php echo BASE_URL ?>/api/edit_suiver/%id%" method="post"></form>
-            <table class="table table-striped table-inverse table-responsive">
+            <table class="table table-striped table-inverse table-responsive" id="table">
                 <thead class="thead-inverse">
                     <tr>
                         <th>#ID</th>
@@ -31,10 +31,10 @@
                             <td><?php echo $value["de"] ?></td>
                             <td><?php echo $value["a"] ?></td>
                             <td>
-                                <a href="<?php echo BASE_URL ?>/api/edit_suiver/<?php echo $value["id"] ?>" type="button" class="btn btn-success edit-button">
+                                <a href="<?php echo BASE_URL ?>/api/edit_suiver/<?php echo $value["id"] ?>" class="btn btn-success edit-button">
                                     Edit
                                 </a>
-                                <a href="<?php echo BASE_URL ?>/api/delete_suiver/<?php echo $value["id"] ?>" type="button" class="btn btn-danger">
+                                <a href="<?php echo BASE_URL ?>/api/delete_suiver/<?php echo $value["id"] ?>" class="btn btn-danger">
                                     Remove
                                 </a>
                             </td>
