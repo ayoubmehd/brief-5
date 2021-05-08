@@ -51,7 +51,7 @@ async function main() {
     const option = document.createElement("option");
 
     option.value = element.id;
-    option.textContent = element.effecrif;
+    option.textContent = element.libelle;
 
     group.appendChild(option);
   });
