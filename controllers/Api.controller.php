@@ -18,10 +18,12 @@ class ApiController extends AbstructController
     {
         if (!isset($_POST["add"])) return;
 
+        $libelle = $_POST["libelle"];
         $effectif = $_POST["effectif"];
         $group = new Group();
         $group->insert([
-            "effecrif" => $effectif
+            "libelle" => $libelle,
+            "effectif" => $effectif,
         ]);
 
         return $this->redirect("/dashboard/group");
@@ -39,11 +41,13 @@ class ApiController extends AbstructController
     {
         if (!isset($_POST["edit"])) return;
 
+        $libelle = $_POST["libelle"];
         $effectif = $_POST["effectif"];
         $group = new Group();
         $group->update([
-            "effecrif" => $effectif
-        ], "id = $id");
+            "libelle" => $libelle,
+            "effectif" => $effectif,
+        ], ["id" => $id]);
 
         return $this->redirect("/dashboard/group");
     }
