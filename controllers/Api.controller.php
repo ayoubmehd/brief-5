@@ -1,5 +1,10 @@
 <?php
 
+
+/**
+ * This file need to be refactored - split code to different controller
+ * 
+ */
 class ApiController extends AbstructController
 {
 
@@ -16,7 +21,9 @@ class ApiController extends AbstructController
 
     public function add_group()
     {
-        if (!isset($_POST["add"])) return;
+        if (!isset($_POST["add"])) return $this->redirect("/dashboard/group");
+        if (!isset($_POST["libelle"])) return $this->redirect("/dashboard/group");
+        if (!isset($_POST["effectif"])) return $this->redirect("/dashboard/group");
 
         $libelle = $_POST["libelle"];
         $effectif = $_POST["effectif"];
@@ -39,7 +46,9 @@ class ApiController extends AbstructController
 
     public function edit_group($id)
     {
-        if (!isset($_POST["edit"])) return;
+        if (!isset($_POST["edit"])) return $this->redirect("/dashboard/group");
+        if (!isset($_POST["libelle"])) return $this->redirect("/dashboard/group");
+        if (!isset($_POST["effectif"])) return $this->redirect("/dashboard/group");
 
         $libelle = $_POST["libelle"];
         $effectif = $_POST["effectif"];
@@ -64,7 +73,12 @@ class ApiController extends AbstructController
 
     public function add_matiere()
     {
-        if (!isset($_POST["add"])) return;
+        if (!isset($_POST["add"]))
+            return $this->redirect("/dashboard/matiere");
+        if (!isset($_POST["Matiere_label"]))
+            return $this->redirect("/dashboard/matiere");
+        if (empty($_POST["Matiere_label"]))
+            return $this->redirect("/dashboard/matiere");
 
         $Matiere_label = $_POST["Matiere_label"];
         $obj = new Matiere();
@@ -85,7 +99,9 @@ class ApiController extends AbstructController
 
     public function edit_matiere($id)
     {
-        if (!isset($_POST["edit"])) return;
+        if (!isset($_POST["edit"])) return $this->redirect("/dashboard/matiere");
+        if (!isset($_POST["Matiere_label"])) return $this->redirect("/dashboard/matiere");
+        if (empty($_POST["Matiere_label"])) return $this->redirect("/dashboard/matiere");
 
         $Matiere_label = $_POST["Matiere_label"];
         $obj = new Matiere();
@@ -109,18 +125,28 @@ class ApiController extends AbstructController
 
     public function salle_aviable()
     {
+        if (!isset($_GET["jour"])) {
+            echo json_encode(["data" => null, "error" => "entrer le jour de la seance"]);
+            return;
+        }
+        if (!isset($_GET["de"])) {
+            echo json_encode(["data" => null, "error" => "entrer l'heur de seance"]);
+            return;
+        }
+
         $jour = $_GET["jour"];
         $de = $_GET["de"];
         $obj = new Salle();
         $obj->query("SELECT * FROM salle WHERE id NOT IN (SELECT Salle_id FROM suiver WHERE jour = $jour AND de = '$de')");
-
 
         echo json_encode(["data" => $obj->result]);
     }
 
     public function add_salle()
     {
-        if (!isset($_POST["add"])) return;
+        if (!isset($_POST["add"])) return $this->redirect("/dashboard/salle");
+        if (!isset($_POST["libelle"])) return $this->redirect("/dashboard/salle");
+        if (!isset($_POST["capacite"])) return $this->redirect("/dashboard/salle");
 
         $libelle = $_POST["libelle"];
         $capacite = $_POST["capacite"];
@@ -143,7 +169,9 @@ class ApiController extends AbstructController
 
     public function edit_salle($id)
     {
-        if (!isset($_POST["edit"])) return;
+        if (!isset($_POST["edit"])) return $this->redirect("/dashboard/salle");
+        if (!isset($_POST["libelle"])) return $this->redirect("/dashboard/salle");
+        if (!isset($_POST["capacite"])) return $this->redirect("/dashboard/salle");
 
         $libelle = $_POST["libelle"];
         $capacite = $_POST["capacite"];
@@ -170,7 +198,14 @@ class ApiController extends AbstructController
 
     public function add_suiver()
     {
-        if (!isset($_POST["add"])) return;
+        if (!isset($_POST["add"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["Ensegniant_id"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["Groupe_id"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["Salle_id"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["jour"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["de"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["a"])) return $this->redirect("/dashboard/suiver");
+
         $Ensegniant_id = $_POST["Ensegniant_id"];
         $Groupe_id = $_POST["Groupe_id"];
         $Salle_id = $_POST["Salle_id"];
@@ -201,7 +236,13 @@ class ApiController extends AbstructController
 
     public function edit_suiver($id)
     {
-        if (!isset($_POST["edit"])) return;
+        if (!isset($_POST["edit"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["Ensegniant_id"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["Groupe_id"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["Salle_id"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["jour"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["de"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["a"])) return $this->redirect("/dashboard/suiver");
 
         $Ensegniant_id = $_POST["Ensegniant_id"];
         $Groupe_id = $_POST["Groupe_id"];
