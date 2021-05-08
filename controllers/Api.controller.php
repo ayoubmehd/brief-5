@@ -91,7 +91,7 @@ class ApiController extends AbstructController
         $obj = new Matiere();
         $obj->update([
             "Matiere_label" => $Matiere_label
-        ], "id = $id");
+        ], ["id" => $id]);
 
         return $this->redirect("/dashboard/matiere");
     }
@@ -152,7 +152,7 @@ class ApiController extends AbstructController
         $obj->update([
             "libelle" => $libelle,
             "capacite" => $capacite,
-        ], "id = $id");
+        ], ["id" => $id]);
 
         return $this->redirect("/dashboard/salle");
     }
@@ -188,9 +188,6 @@ class ApiController extends AbstructController
             "a" => $a,
         ]);
 
-        // echo "<pre>";
-        // var_dump($obj->errors);
-        // echo "</pre>";
         return $this->redirect("/dashboard/suiver");
     }
 
@@ -230,7 +227,6 @@ class ApiController extends AbstructController
     {
         $obj = new Suiver();
         $obj->query("SELECT * FROM ensegniant");
-
 
         echo json_encode(["data" => $obj->result]);
     }
