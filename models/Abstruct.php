@@ -39,11 +39,12 @@ class Abstruct
             "vals" => []
         ];
 
-        foreach ($data as $key => $value) {
-            $returns["cols"][] = $key;
-            $returns["rows"][] = "?";
-            $returns["vals"][] = $value;
-        }
+        if (is_array($data))
+            foreach ($data as $key => $value) {
+                $returns["cols"][] = $key;
+                $returns["rows"][] = "?";
+                $returns["vals"][] = $value;
+            }
 
         return $returns;
     }
