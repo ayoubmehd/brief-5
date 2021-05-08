@@ -1,5 +1,5 @@
  <main class="mt-4">
-     <h1 class="text-center mb-4">Add Suivers</h1>
+     <h1 class="text-center mb-4">Ajouter un reservation</h1>
 
      <div class="">
          <!-- Start Form -->
