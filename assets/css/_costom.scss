@@ -1,0 +1,15 @@
+.table {
+  td {
+    min-width: 118px;
+    &:first-child {
+      min-width: auto;
+    }
+  }
+}
+
+td {
+  select,
+  input {
+    width: 90%;
+  }
+}
