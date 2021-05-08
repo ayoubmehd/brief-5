@@ -20,7 +20,7 @@
                             <a href="/dashboard/salle" class="nav-link text-white">Salle</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/dashboard/suiver" class="nav-link text-white">Suiver</a>
+                            <a href="/dashboard/suiver" class="nav-link text-white">Reservations</a>
                         </li>
                         <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
