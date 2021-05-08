@@ -20,7 +20,7 @@
         </div>
         <div class="d-flex">
             <form id="editForm" action="<?php echo BASE_URL ?>/api/edit_group/%id%" method="post"></form>
-            <table class="table table-responsive mx-auto">
+            <table class="table">
                 <thead class="thead-inverse">
                     <tr>
                         <th>#ID</th>

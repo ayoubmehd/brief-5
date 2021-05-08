@@ -2,7 +2,7 @@
     <h1 class="text-center mb-4">Gestion des matieres</h1>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <!-- Start Form -->
             <form id="addForm" action="<?php echo BASE_URL ?>/api/add_matiere" method="POST" class="form">
                 <div class="form-group">
@@ -14,9 +14,9 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
             <form id="editForm" action="<?php echo BASE_URL ?>/api/edit_matiere/%id%" method="post"></form>
-            <table class="table table-striped table-inverse table-responsive">
+            <table class="table">
                 <thead class="thead-inverse">
                     <tr>
                         <th>#ID</th>

@@ -1,13 +1,13 @@
 <main class="mt-4">
-    <h1 class="text-center mb-4">Gestion des Suivers</h1>
+    <h1 class="text-center mb-4">Reservations des salles</h1>
 
     <div class="d-flex justify-content-center align-items-center flex-column">
         <div class="w-100">
-            <a name="" id="" class="btn btn-secondary mb-4" href="<?php BASE_URL ?>/dashboard/add_suiver" role="button">Ajouter suiver</a>
+            <a name="" id="" class="btn btn-secondary mb-4" href="<?php BASE_URL ?>/dashboard/add_suiver" role="button">Reserver</a>
         </div>
         <div class="w-100">
             <form id="editForm" action="<?php echo BASE_URL ?>/api/edit_suiver/%id%" method="post"></form>
-            <table class="table table-responsive" id="table">
+            <table class="table" id="table">
                 <thead class="thead-inverse">
                     <tr>
                         <th>#ID</th>

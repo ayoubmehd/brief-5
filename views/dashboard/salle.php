@@ -1,26 +1,26 @@
 <main class="mt-4">
     <h1 class="text-center mb-4">Gestion des Salles</h1>
 
-    <div class="row">
-        <div class="col-md-6">
+    <div class="">
+        <div class="mb-3">
             <!-- Start Form -->
-            <form id="addForm" action="<?php echo BASE_URL ?>/api/add_salle" method="POST" class="form">
-                <div class="form-group">
+            <form id="addForm" action="<?php echo BASE_URL ?>/api/add_salle" method="POST" class="form-inline">
+                <div class="form-group ml-2">
                     <label for="libelle">Libelle</label>
-                    <input type="text" class="form-control" name="libelle" id="libelle" aria-describedby="emailHelpId" placeholder="Libelle">
+                    <input type="text" class="form-control ml-2" name="libelle" id="libelle" placeholder="Libelle">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <label for="capacite">Capacite</label>
-                    <input type="number" class="form-control" name="capacite" id="capacite" aria-describedby="emailHelpId" placeholder="Capacite">
+                    <input type="number" class="form-control ml-2" name="capacite" id="capacite" placeholder="Capacite">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <button class="btn btn-success" name="add">Save</button>
                 </div>
             </form>
         </div>
-        <div class="col-md-6">
+        <div class="">
             <form id="editForm" action="<?php echo BASE_URL ?>/api/edit_salle/%id%" method="post"></form>
-            <table class="table table-striped table-inverse table-responsive">
+            <table class="table">
                 <thead class="thead-inverse">
                     <tr>
                         <th>#ID</th>
