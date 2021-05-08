@@ -1,26 +1,26 @@
 <main class="mt-4">
     <h1 class="text-center mb-4">Gestion des groups</h1>
 
-    <div class="row">
-        <div class="col-md-6">
+    <div class="">
+        <div class="mb-3">
             <!-- Start Form -->
-            <form id="addForm" action="<?php echo BASE_URL ?>/api/add_group" method="POST" class="form">
-                <div class="form-group">
+            <form id="addForm" action="<?php echo BASE_URL ?>/api/add_group" method="POST" class="form-inline">
+                <div class="form-group ml-2">
                     <label for="libelle">libelle</label>
-                    <input type="text" class="form-control" name="libelle" id="libelle" placeholder="Libelle">
+                    <input type="text" class="form-control ml-2" name="libelle" id="libelle" placeholder="Libelle">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <label for="effectif">Effectif</label>
-                    <input type="number" class="form-control" name="effectif" id="effectif" placeholder="Effectif">
+                    <input type="number" class="form-control ml-2" name="effectif" id="effectif" placeholder="Effectif">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <button class="btn btn-success" name="add">Save</button>
                 </div>
             </form>
         </div>
-        <div class="col-md-6">
+        <div class="d-flex">
             <form id="editForm" action="<?php echo BASE_URL ?>/api/edit_group/%id%" method="post"></form>
-            <table class="table table-striped table-inverse table-responsive">
+            <table class="table table-responsive mx-auto">
                 <thead class="thead-inverse">
                     <tr>
                         <th>#ID</th>
