@@ -11,12 +11,14 @@
                      <option value="-1" disabled selected>Group</option>
                  </select>
              </div>
-             <div class="form-group">
-                 <label for="ensegniant">Ensegniant</label>
-                 <select class="form-control" name="Ensegniant_id" id="ensegniant">
-                     <option value="-1" disabled selected>Ensegniant</option>
-                 </select>
-             </div>
+             <?php if ($this->isAdmin()) : ?>
+                 <div class="form-group">
+                     <label for="ensegniant">Ensegniant</label>
+                     <select class="form-control" name="Ensegniant_id" id="ensegniant">
+                         <option value="-1" disabled selected>Ensegniant</option>
+                     </select>
+                 </div>
+             <?php endif; ?>
              <div class="form-group">
                  <label for="jour">jour</label>
                  <select class="form-control" name="jour" id="jour">

@@ -55,6 +55,4 @@
     </script>
     <script src="<?php echo BASE_URL ?>/assets/js/fetch.js"></script>
     <script src="<?php echo BASE_URL ?>/assets/js/edit.js"></script>
-    <script>
-    </script>
 </main>

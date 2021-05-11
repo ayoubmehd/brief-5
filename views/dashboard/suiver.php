@@ -11,7 +11,9 @@
                 <thead class="thead-inverse">
                     <tr>
                         <th>#ID</th>
-                        <th>Ensegniant</th>
+                        <?php if ($this->isAdmin()) : ?>
+                            <th>Ensegniant</th>
+                        <?php endif; ?>
                         <th>Groupe</th>
                         <th>Salle</th>
                         <th>jour</th>
@@ -24,7 +26,9 @@
                     <?php foreach ($data as $key => $value) : ?>
                         <tr>
                             <td scope="row"><?php echo $value["id"] ?></td>
-                            <td><?php echo $value["Ensegniant_id"] ?></td>
+                            <?php if ($this->isAdmin()) : ?>
+                                <td><?php echo $value["Ensegniant_id"] ?></td>
+                            <?php endif; ?>
                             <td><?php echo $value["Groupe_id"] ?></td>
                             <td><?php echo $value["Salle_id"] ?></td>
                             <td><?php echo $value["jour"] ?></td>
@@ -47,8 +51,8 @@
     <script>
         const endpoint = "suiver_all";
         const filds = [
-            "Ensegniant_id",
-            "Groupe_id",
+
+            <?php if ($this->isAdmin()) : ?> "Ensegniant_id", <?php endif ?> "Groupe_id",
             "Salle_id",
             "jour",
             "de",
