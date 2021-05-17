@@ -16,14 +16,11 @@ function editButtonsClick(event) {
   tr.shift();
   const lastTr = tr.pop();
   editForm.setAttribute("action", lastTr.children[0].href);
-  lastTr.innerHTML = `
-    <button form="editForm" name="edit" class="btn btn-success edit-button">
-        Save
-    </button>
-    <button form="editForm" type="reset" class="btn btn-danger">
-        Cancel
-    </button>
-  `;
+  lastTr.innerHTML = "";
+  lastTr.appendChild(createButton("editForm", "edit", "btn btn-success edit-button", "Save"));
+  lastTr.appendChild(document.createTextNode(" "));
+  lastTr.appendChild(createButton("editForm", "", "btn btn-danger", "Cancel", "reset"));
+
   tr.forEach((elm, index) => {
     const input = document.createElement("input");
     input.type = "text";

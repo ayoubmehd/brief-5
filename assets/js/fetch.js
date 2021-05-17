@@ -9,23 +9,14 @@ async function show(parentElm, endpoint, filds) {
   const result = await fetchElm(endpoint);
   parentElm.innerHTML = "";
   result.data.forEach((elm) => {
-    parentElm.innerHTML += `
-          <tr>
-          <td scope="row">${elm.id}</td>
-            ${filds.reduce((acc, fild) => `${acc}<td>${elm[fild]}</td>`, "")}
-          <td>
-          <a href="/api/edit_group/${
-            elm.id
-          }" onclick="editButtonsClick(event)" type="button" class="btn btn-success edit-button">
-              Edit
-          </a>
-          <a href="/api/delete_group/${
-            elm.id
-          }" type="button" class="btn btn-danger">
-              Remove
-          </a>
-          </td>
-          </tr>
-      `;
+    parentElm.appendChild(createTr(
+      createTd(elm.id, [{ name: "scope", value: "row" }]),
+      ...filds.map(fild => createTd(elm[fild])),
+      createTd("", [],
+        createA("Edit", `/api/edit_group/${elm.id}`, "btn btn-success edit-button", editButtonsClick),
+        document.createTextNode(" "),
+        createA("Remove", `/api/delete_group/${elm.id}`, "btn btn-danger")
+      ),
+    ));
   });
 }
