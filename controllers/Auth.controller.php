@@ -78,7 +78,7 @@ class AuthController extends AbstructController
     public function logout()
     {
         session_destroy();
-        return $this->redirect("/login");
+        return $this->redirect("/auth/login");
     }
 
     // Helpers
