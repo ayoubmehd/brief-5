@@ -8,28 +8,28 @@ abstract class AbstructController
 
 
     // User info
-    function userid()
+    protected function userid()
     {
         return isset($_SESSION["user"]) ? $_SESSION["user"]["user_id"] : NULL;
     }
 
-    public function fullname()
+    protected function fullname()
     {
         return isset($_SESSION["user"]) ? $_SESSION["user"]["fullname"] : NULL;
     }
 
-    public function email()
+    protected function email()
     {
         return isset($_SESSION["user"]) ? $_SESSION["user"]["email"] : NULL;
     }
 
-    // Bool helper functions
-    public function isAdmin()
+    // Bool auth helper functions
+    protected function isAdmin()
     {
         return $this->isLoggedIn() && $_SESSION["user"]["role"] === "admin";
     }
 
-    public function isLoggedIn()
+    protected function isLoggedIn()
     {
         return isset($_SESSION["user"]) && $_SESSION["user"]["loged_in"];
     }
