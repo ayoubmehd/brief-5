@@ -199,14 +199,19 @@ class ApiController extends AbstructController
     public function add_suiver()
     {
         if (!isset($_POST["add"])) return $this->redirect("/dashboard/suiver");
-        if (!isset($_POST["Ensegniant_id"])) return $this->redirect("/dashboard/suiver");
+        if (!isset($_POST["Ensegniant_id"]) && $this->isAdmin()) return $this->redirect("/dashboard/suiver");
         if (!isset($_POST["Groupe_id"])) return $this->redirect("/dashboard/suiver");
         if (!isset($_POST["Salle_id"])) return $this->redirect("/dashboard/suiver");
         if (!isset($_POST["jour"])) return $this->redirect("/dashboard/suiver");
         if (!isset($_POST["de"])) return $this->redirect("/dashboard/suiver");
         if (!isset($_POST["a"])) return $this->redirect("/dashboard/suiver");
 
-        $Ensegniant_id = $_POST["Ensegniant_id"];
+        $user = new User();
+        $user->select(["Ensegniant_id"], ["id" => $this->userid()]);
+        $currentUserEnsegniantId = isset($user->result[0]) ? $user->result[0]["Ensegniant_id"] : null;
+
+        $Ensegniant_id = $this->isAdmin() ? $_POST["Ensegniant_id"] : $currentUserEnsegniantId;
+
         $Groupe_id = $_POST["Groupe_id"];
         $Salle_id = $_POST["Salle_id"];
         $jour = $_POST["jour"];
