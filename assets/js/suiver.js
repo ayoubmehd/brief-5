@@ -90,7 +90,7 @@ async function getSalls() {
 // Suiver Page
 const tbody = document.querySelector(".tbody");
 const editButtons = document.querySelectorAll(".edit-button");
-
+const isAdmin = filds.indexOf("Ensegniant_id") !== -1;
 Array.from(editButtons).forEach((elm) => {
   elm.addEventListener("click", clickEditButton);
 });
@@ -111,30 +111,32 @@ function clickEditButton(event) {
 
   const trArray = Array.from(event.target.parentNode.parentElement.children);
 
-  // Ensegniant
-  const ensegniant = trArray[1];
-  displayEnsegniant(ensegniant);
+  if (isAdmin) {
+    // Ensegniant
+    const ensegniant = trArray[1];
+    displayEnsegniant(ensegniant);
+  }
 
   // Groupe
-  const groupe = trArray[2];
+  const groupe = trArray[isAdmin ? 2 : 1];
   displayGroup(groupe);
 
   // jour
-  const jour = trArray[4];
+  const jour = trArray[isAdmin ? 4 : 3];
   displayJour(jour);
   // de
-  const de = trArray[5];
+  const de = trArray[isAdmin ? 5 : 4];
   displayDe(de);
   // a
-  const a = trArray[6];
+  const a = trArray[isAdmin ? 6 : 5];
   displayA(a);
 
   // Salle
-  const salle = trArray[3];
+  const salle = trArray[isAdmin ? 3 : 2];
   displaySalle(salle, jour, de);
 
   // Buttons
-  const actions = trArray[7];
+  const actions = trArray[isAdmin ? 7 : 6];
   editForm.setAttribute("action", event.target.href);
   displayFormButtons(actions);
 }
@@ -187,6 +189,7 @@ function displayFormButtons(htmlElm) {
   const cancelButton = createButton("editForm", "", "btn btn-danger", "Cancel", "reset");
   htmlElm.innerHTML = "";
   htmlElm.appendChild(submitButton);
+  htmlElm.appendChild(document.createTextNode(" "));
   htmlElm.appendChild(cancelButton);
 }
 
@@ -203,7 +206,8 @@ function createSelect(data, prop, placeholder, value, form = "editForm") {
   const select = document.createElement("select");
   select.setAttribute("form", form);
   select.className = "form-control";
-  select.innerHTML = `<option selected disabled>${placeholder}</option>`;
+  clearSelect(select, placeholder);
+
   data.forEach((elm) => {
     const option = document.createElement("option");
     option.textContent = elm[prop];
@@ -245,7 +249,7 @@ function displaySuiverAll(data, htmlElm) {
     htmlElm.appendChild(
       createTr(
         createTd(elm.id),
-        createTd(elm.Ensegniant_id),
+        isAdmin ? createTd(elm.Ensegniant_id) : document.createTextNode(""),
         createTd(elm.Groupe_id),
         createTd(elm.Salle_id),
         createTd(elm.jour),
