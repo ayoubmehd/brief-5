@@ -23,6 +23,11 @@ abstract class AbstructController
         return isset($_SESSION["user"]) ? $_SESSION["user"]["email"] : NULL;
     }
 
+    protected function ensegniant_id()
+    {
+        return isset($_SESSION["user"]) ? $_SESSION["user"]["Ensegniant_id"] : NULL;
+    }
+
     // Bool auth helper functions
     protected function isAdmin()
     {

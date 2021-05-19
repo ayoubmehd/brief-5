@@ -22,6 +22,7 @@ class AuthController extends AbstructController
             "fullname"      => $this->user->result[0]["full_name"],
             "email"            => $this->user->result[0]["email"],
             "role"            => $this->user->result[0]["role"],
+            "Ensegniant_id" => $this->user->result[0]["Ensegniant_id"],
             "loged_in"      => true,
         ];
     }
