@@ -23,27 +23,39 @@
                     </tr>
                 </thead>
                 <tbody class="tbody">
-                    <?php foreach ($data as $key => $value) : ?>
-                        <tr>
-                            <td scope="row"><?php echo $value["id"] ?></td>
-                            <?php if ($this->isAdmin()) : ?>
-                                <td><?php echo $value["Ensegniant_id"] ?></td>
-                            <?php endif; ?>
-                            <td><?php echo $value["Groupe_id"] ?></td>
-                            <td><?php echo $value["Salle_id"] ?></td>
-                            <td><?php echo $value["jour"] ?></td>
-                            <td><?php echo $value["de"] ?></td>
-                            <td><?php echo $value["a"] ?></td>
-                            <td>
-                                <a href="<?php echo BASE_URL ?>/api/edit_suiver/<?php echo $value["id"] ?>" class="btn btn-success edit-button">
-                                    Edit
-                                </a>
-                                <a href="<?php echo BASE_URL ?>/api/delete_suiver/<?php echo $value["id"] ?>" class="btn btn-danger">
-                                    Remove
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+                    <?php // foreach ($data as $key => $value) : 
+                    ?>
+                    <tr>
+                        <td scope="row"><?php // echo $value["id"] 
+                                        ?></td>
+                        <?php if ($this->isAdmin()) : ?>
+                            <td><?php echo $value["Ensegniant_id"] ?></td>
+                        <?php endif; ?>
+                        <td><?php // echo $value["Groupe_id"] 
+                            ?></td>
+                        <td><?php // echo $value["Salle_id"] 
+                            ?></td>
+                        <td><?php // echo $value["jour"] 
+                            ?></td>
+                        <td><?php // echo $value["de"] 
+                            ?></td>
+                        <td><?php // echo $value["a"] 
+                            ?></td>
+                        <td>
+                            <a href="<?php // echo BASE_URL 
+                                        ?>/api/edit_suiver/<?php // echo $value["id"] 
+                                                            ?>" class="btn btn-success edit-button">
+                                Edit
+                            </a>
+                            <a href="<?php // echo BASE_URL 
+                                        ?>/api/delete_suiver/<?php // echo $value["id"] 
+                                                                ?>" class="btn btn-danger">
+                                Remove
+                            </a>
+                        </td>
+                    </tr>
+                    <?php // endforeach; 
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -61,4 +73,12 @@
     </script>
     <script src="<?php echo BASE_URL ?>/assets/js/fetch.js"></script>
     <script src="<?php echo BASE_URL ?>/assets/js/suiver.js"></script>
+    <script>
+        async function init() {
+            const data = await fetchElm("suiver_all");
+            displaySuiverAll(data.data, tbody);
+        }
+
+        document.addEventListener("DOMContentLoaded", init);
+    </script>
 </main>

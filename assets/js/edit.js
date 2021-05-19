@@ -35,5 +35,12 @@ function editButtonsClick(event) {
 // Reset edit form
 function resetEditForm(event) {
   event.preventDefault();
-  show(tbody, endpoint, filds);
+  show(tbody, endpoint, filds, edit_endpoint, delete_endpoint);
 }
+
+function init() {
+  show(tbody, endpoint, filds, edit_endpoint, delete_endpoint);
+}
+
+
+document.addEventListener("DOMContentLoaded", init);

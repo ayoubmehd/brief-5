@@ -30,21 +30,30 @@
                     </tr>
                 </thead>
                 <tbody class="tbody">
-                    <?php foreach ($data as $key => $value) : ?>
-                        <tr>
-                            <td scope="row"><?php echo $value["id"] ?></td>
-                            <td><?php echo $value["libelle"] ?></td>
-                            <td><?php echo $value["capacite"] ?></td>
-                            <td>
-                                <a href="<?php echo BASE_URL ?>/api/edit_salle/<?php echo $value["id"] ?>" type="button" class="btn btn-success edit-button">
-                                    Edit
-                                </a>
-                                <a href="<?php echo BASE_URL ?>/api/delete_salle/<?php echo $value["id"] ?>" type="button" class="btn btn-danger">
-                                    Remove
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+                    <?php // foreach ($data as $key => $value) : 
+                    ?>
+                    <tr>
+                        <td scope="row"><?php // echo $value["id"] 
+                                        ?></td>
+                        <td><?php // echo $value["libelle"] 
+                            ?></td>
+                        <td><?php // echo $value["capacite"] 
+                            ?></td>
+                        <td>
+                            <a href="<?php // echo BASE_URL 
+                                        ?>/api/edit_salle/<?php // echo $value["id"] 
+                                                            ?>" type="button" class="btn btn-success edit-button">
+                                Edit
+                            </a>
+                            <a href="<?php // echo BASE_URL 
+                                        ?>/api/delete_salle/<?php // echo $value["id"] 
+                                                            ?>" type="button" class="btn btn-danger">
+                                Remove
+                            </a>
+                        </td>
+                    </tr>
+                    <?php // endforeach; 
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -52,6 +61,8 @@
     <script>
         const endpoint = "salle_all";
         const filds = ["libelle", "capacite"];
+        const edit_endpoint = "edit_salle",
+            delete_endpoint = "delete_salle";
     </script>
     <script src="<?php echo BASE_URL ?>/assets/js/fetch.js"></script>
     <script src="<?php echo BASE_URL ?>/assets/js/edit.js"></script>

@@ -5,7 +5,7 @@ async function fetchElm(endpoint) {
   return resultJson;
 }
 
-async function show(parentElm, endpoint, filds) {
+async function show(parentElm, endpoint, filds, edit_endpoint, delete_endpoint) {
   const result = await fetchElm(endpoint);
   parentElm.innerHTML = "";
   result.data.forEach((elm) => {
@@ -13,9 +13,9 @@ async function show(parentElm, endpoint, filds) {
       createTd(elm.id, [{ name: "scope", value: "row" }]),
       ...filds.map(fild => createTd(elm[fild])),
       createTd("", [],
-        createA("Edit", `/api/edit_group/${elm.id}`, "btn btn-success edit-button", editButtonsClick),
+        createA("Edit", `/api/${edit_endpoint}/${elm.id}`, "btn btn-success edit-button", editButtonsClick),
         document.createTextNode(" "),
-        createA("Remove", `/api/delete_group/${elm.id}`, "btn btn-danger")
+        createA("Remove", `/api/${delete_endpoint}/${elm.id}`, "btn btn-danger")
       ),
     ));
   });

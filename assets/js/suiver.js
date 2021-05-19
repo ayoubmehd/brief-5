@@ -146,7 +146,7 @@ function displayEnsegniant(htmlElm) {
 }
 
 function displayGroup(htmlElm) {
-  display(htmlElm, "group_all", "effecrif", "Groupe", "Groupe_id");
+  display(htmlElm, "group_all", "libelle", "Groupe", "Groupe_id");
 }
 
 async function displaySalle(salleElm, jourElm, deElm) {
