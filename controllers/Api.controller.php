@@ -190,7 +190,7 @@ class ApiController extends AbstructController
     public function suiver_all()
     {
         $obj = new Suiver();
-        $where = $this->ensegniant_id() ? "WHERE Ensegniant_id = ?" : "";
+        $where = !$this->isAdmin() ? "WHERE Ensegniant_id = ?" : "";
         $sql = "SELECT suiver.id, ensegniant.id as \"ensegniant_id\", ensegniant.nom as \"ensegniant_nom\", groupe.id as \"groupe_id\", groupe.libelle as \"groupe_libelle\", salle.id as \"salle_id\", salle.libelle as \"salle_libelle\", jour, de, a FROM suiver INNER JOIN ensegniant ON ensegniant.id = suiver.Ensegniant_id INNER JOIN groupe ON suiver.Groupe_id = groupe.id INNER JOIN salle ON salle.id = suiver.Salle_id $where";
         $obj->query($sql, [$this->ensegniant_id()]);
 
