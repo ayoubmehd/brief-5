@@ -20,28 +20,28 @@ const times = [
   { id: "18:00" },
 ];
 
-const jours = [
-  {
-    id: 1,
-    label: "Monday"
-  },
-  {
-    id: 2,
-    label: "Tuesday"
-  },
-  {
-    id: 3,
-    label: "Wednesday"
-  },
-  {
-    id: 4,
-    label: "Thursday"
-  },
-  {
-    id: 5,
-    label: "Friday"
-  }
-]
+const jours = [];
+
+jours[1] = {
+  id: 1,
+  label: "Monday"
+};
+jours[2] = {
+  id: 2,
+  label: "Tuesday"
+};
+jours[3] = {
+  id: 3,
+  label: "Wednesday"
+};
+jours[4] = {
+  id: 4,
+  label: "Thursday"
+};
+jours[5] = {
+  id: 5,
+  label: "Friday"
+};
 
 async function main() {
   const group_all = await fetchElm("group_all");
@@ -164,21 +164,21 @@ async function displaySalle(salleElm, jourElm, deElm) {
 }
 
 function displayJour(htmlElm) {
-  const select = createSelect(jours, "label", "Jour", htmlElm.innerHTML);
+  const select = createSelect(jours, "label", "Jour", htmlElm.dataset.id);
   select.name = "jour";
   htmlElm.innerHTML = "";
   htmlElm.appendChild(select);
 }
 
 function displayDe(htmlElm) {
-  const select = createSelect(times, "id", "De", htmlElm.innerHTML);
+  const select = createSelect(times, "id", "De", htmlElm.dataset.time);
   select.name = "de";
   htmlElm.innerHTML = "";
   htmlElm.appendChild(select);
 }
 
 function displayA(htmlElm) {
-  const select = createSelect(times, "id", "A", htmlElm.innerHTML);
+  const select = createSelect(times, "id", "A", htmlElm.dataset.time);
   select.name = "a";
   htmlElm.innerHTML = "";
   htmlElm.appendChild(select);
@@ -195,7 +195,7 @@ function displayFormButtons(htmlElm) {
 
 async function display(htmlElm, endpoit, prop, placeholder, name) {
   const data = await fetchElm(endpoit);
-  const select = createSelect(data.data, prop, placeholder, htmlElm.innerHTML);
+  const select = createSelect(data.data, prop, placeholder, htmlElm.dataset.id);
   select.name = name;
   htmlElm.innerHTML = "";
   htmlElm.appendChild(select);
@@ -245,16 +245,16 @@ async function fetchSalle(salleElm, jourElm, deElm) {
 function displaySuiverAll(data, htmlElm) {
   htmlElm.innerHTML = "";
   data.forEach(elm => {
-
+    console.log(getDay(elm.jour));
     htmlElm.appendChild(
       createTr(
         createTd(elm.id),
-        isAdmin ? createTd(elm.Ensegniant_id) : document.createTextNode(""),
-        createTd(elm.Groupe_id),
-        createTd(elm.Salle_id),
-        createTd(elm.jour),
-        createTd(elm.de),
-        createTd(elm.a),
+        isAdmin ? createTd(elm.ensegniant_nom, [{ name: "data-id", value: elm.ensegniant_id }]) : document.createTextNode(""),
+        createTd(elm.groupe_libelle, [{ name: "data-id", value: elm.groupe_id }]),
+        createTd(elm.salle_libelle, [{ name: "data-id", value: elm.salle_id }]),
+        createTd(getDay(elm.jour).label, [{ name: "data-id", value: elm.jour }]),
+        createTd(formatTime(elm.de), [{ name: "data-time", value: elm.de }]),
+        createTd(formatTime(elm.a), [{ name: "data-time", value: elm.a }]),
         createTd("", [],
           createA("Edit", `/api/edit_suiver/${elm.id}`, "btn btn-success edit-button", clickEditButton),
           document.createTextNode(" "),
@@ -265,4 +265,19 @@ function displaySuiverAll(data, htmlElm) {
   });
 
 
+}
+
+function getDay(dayId) {
+  return jours[dayId]
+}
+
+
+function formatTime(timeString = "") {
+  const date = new Date();
+
+  const timeArray = timeString.split(":").map(elm => parseInt(elm));
+
+  date.setHours(...timeArray);
+
+  return date.toLocaleTimeString("fr", { hour: '2-digit', minute: '2-digit' });
 }
