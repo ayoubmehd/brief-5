@@ -29,6 +29,11 @@ class DashboardController extends AbstructController
         $this->view("group", ["data" => $obj->result]);
     }
 
+    public function add_groups()
+    {
+        $this->view("multi_add_groupe");
+    }
+
     public function matiere()
     {
         $obj = new Matiere();

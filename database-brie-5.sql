@@ -6,6 +6,8 @@
 -- Generation Time: Apr 27, 2021 at 10:51 AM
 -- Server version: 5.7.18
 -- PHP Version: 7.3.27
+SELECT suiver.id, ensegniant.id as "Ensegniant_id", ensegniant.nom, groupe.id as "Groupe_id", groupe.libelle as "Groupe_libelle", salle.id as "Salle_id", salle.libelle as "salle_libelle" FROM suiver INNER JOIN ensegniant ON ensegniant.id = suiver.Ensegniant_id INNER JOIN groupe ON suiver.Groupe_id = groupe.id INNER JOIN salle ON salle.id = suiver.Salle_id WHERE Ensegniant_id = 26;
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;

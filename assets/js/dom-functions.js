@@ -1,5 +1,18 @@
 
 // DOM Functions
+function createElement(element, textContent, className, atributes = [], ...childrens) {
+    const domElement = document.createElement(element);
+    domElement.textContent = textContent;
+    domElement.className = className;
+    childrens.forEach(child => {
+        domElement.appendChild(child);
+    });
+    atributes.forEach(attr => {
+        domElement.setAttribute(attr.name, attr.value);
+    });
+    return domElement;
+}
+
 function clearSelect(select, placeholder, initial = true) {
     select.innerHTML = `<option ${initial ? "selected" : ""} disabled>${placeholder}</option>`;
 }
