@@ -45,7 +45,9 @@ jours[5] = {
 
 async function main() {
   const group_all = await fetchElm("group_all");
-  const ensegniant_all = await fetchElm("ensegniant_all");
+  let ensegniant_all;
+  if (isAdmin && ensegniant_all)
+    ensegniant_all = await fetchElm("ensegniant_all");
 
   group_all.data.forEach((element) => {
     const option = document.createElement("option");
@@ -55,14 +57,15 @@ async function main() {
 
     group.appendChild(option);
   });
-  ensegniant_all.data.forEach((element) => {
-    const option = document.createElement("option");
+  if (isAdmin && ensegniant_all)
+    ensegniant_all.data.forEach((element) => {
+      const option = document.createElement("option");
 
-    option.value = element.id;
-    option.textContent = element.nom;
+      option.value = element.id;
+      option.textContent = element.nom;
 
-    ensegniant.appendChild(option);
-  });
+      ensegniant.appendChild(option);
+    });
 }
 
 if (group) {
@@ -74,7 +77,8 @@ async function getSalls() {
   if (de.value == -1) return;
 
   const salle_data = await fetchElm(
-    `salle_aviable/?jour=${jour.value}&de=${encodeURIComponent(de.value)}`
+    // `salle_aviable/?jour=${jour.value}&de=${encodeURIComponent(de.value)}`
+    'salle_all'
   );
 
   salle_data.data.forEach((element) => {
@@ -94,8 +98,8 @@ const isAdmin = filds.indexOf("Ensegniant_id") !== -1;
 Array.from(editButtons).forEach((elm) => {
   elm.addEventListener("click", clickEditButton);
 });
-
-editForm.addEventListener("reset", resetEditForm);
+if ("editForm" in window)
+  editForm.addEventListener("reset", resetEditForm);
 
 
 
@@ -142,6 +146,7 @@ function clickEditButton(event) {
 }
 
 function displayEnsegniant(htmlElm) {
+  if (!isAdmin) return;
   display(htmlElm, "ensegniant_all", "nom", "Ensegniant", "Ensegniant_id");
 }
 

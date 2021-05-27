@@ -38,24 +38,20 @@
                      <option value="9:00">9:00</option>
                      <option value="10:00">10:00</option>
                      <option value="11:00">11:00</option>
-                     <option value="12:00">12:00</option>
                      <option value="14:00">14:00</option>
                      <option value="15:00">15:00</option>
                      <option value="16:00">16:00</option>
                      <option value="17:00">17:00</option>
-                     <option value="18:00">18:00</option>
                  </select>
              </div>
              <div class="form-group">
                  <label for="a">a</label>
                  <select class="form-control" name="a" id="a">
                      <option value="-1" disabled selected>a</option>
-                     <option value="8:00">8:00</option>
                      <option value="9:00">9:00</option>
                      <option value="10:00">10:00</option>
                      <option value="11:00">11:00</option>
                      <option value="12:00">12:00</option>
-                     <option value="14:00">14:00</option>
                      <option value="15:00">15:00</option>
                      <option value="16:00">16:00</option>
                      <option value="17:00">17:00</option>
@@ -77,7 +73,16 @@
 
 
      </div>
+     <script>
+         const filds = [
 
+             <?php if ($this->isAdmin()) : ?> "Ensegniant_id", <?php endif ?> "Groupe_id",
+             "Salle_id",
+             "jour",
+             "de",
+             "a"
+         ];
+     </script>
      <script src="<?php echo BASE_URL ?>/assets/js/fetch.js"></script>
      <script src="<?php echo BASE_URL ?>/assets/js/suiver.js"></script>
  </main>
