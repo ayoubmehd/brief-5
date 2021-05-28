@@ -4,6 +4,7 @@ const ensegniant = document.querySelector("#ensegniant");
 const salle = document.querySelector("#salle");
 const jour = document.querySelector("#jour");
 const de = document.querySelector("#de");
+const a = document.querySelector("#a");
 if (jour) jour.addEventListener("change", getSalls);
 if (de) de.addEventListener("change", getSalls);
 
@@ -75,10 +76,10 @@ if (group) {
 async function getSalls() {
   if (jour.value == -1) return;
   if (de.value == -1) return;
+  if (a.value == -1) return;
 
   const salle_data = await fetchElm(
-    // `salle_aviable/?jour=${jour.value}&de=${encodeURIComponent(de.value)}`
-    'salle_all'
+    `salle_aviable/?jour=${jour.value}&de=${encodeURIComponent(de.value)}&a=${encodeURIComponent(a.value)}`
   );
 
   salle_data.data.forEach((element) => {
