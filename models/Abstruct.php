@@ -2,10 +2,10 @@
 class Abstruct
 {
 
-    private $cnx;
-    private $result;
-    private $errors;
-    private $isError;
+    protected $cnx;
+    protected $result;
+    protected $errors;
+    protected $isError;
 
     // private static $table = "user";
 

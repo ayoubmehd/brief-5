@@ -7,6 +7,7 @@ const de = document.querySelector("#de");
 const a = document.querySelector("#a");
 if (jour) jour.addEventListener("change", getSalls);
 if (de) de.addEventListener("change", getSalls);
+if (a) a.addEventListener("change", getSalls);
 
 const times = [
   { id: "8:00", },
@@ -81,7 +82,7 @@ async function getSalls() {
   const salle_data = await fetchElm(
     `salle_aviable/?jour=${jour.value}&de=${encodeURIComponent(de.value)}&a=${encodeURIComponent(a.value)}`
   );
-
+  clearSelect(salle, "salle");
   salle_data.data.forEach((element) => {
     const option = document.createElement("option");
 

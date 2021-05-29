@@ -143,8 +143,8 @@ class ApiController extends AbstructController
         $a = $_GET["a"];
         $obj = new Salle();
         // $obj->query("SELECT * FROM salle WHERE id NOT IN (SELECT Salle_id FROM suiver WHERE jour = $jour AND de = '$de')");
-        $sql = "SELECT * FROM salle WHERE salle.id NOT IN (SELECT Salle_id FROM suiver WHERE jour = ? AND (de <= ? AND a > ? OR de <= ? AND a > ?))";
-        $obj->query($sql, [$jour, $de, $de, $a, $a]);
+        // $sql = "SELECT * FROM salle WHERE salle.id NOT IN (SELECT Salle_id FROM suiver WHERE jour = ? AND (de <= ? AND a > ? OR de <= ? AND a > ?))";
+        $obj->get_salle_aviable($jour, $de, $a);
 
         echo json_encode(["data" => $obj->result]);
     }
