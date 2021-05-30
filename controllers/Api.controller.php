@@ -12,6 +12,11 @@ class ApiController extends AbstructController
     // Crud Group
     public function group_all()
     {
+        if ($this->isAdmin()) {
+            echo json_encode(["error" => "Only admin have access to this page"]);
+            return;
+        }
+
         $group = new Group();
         $group->query("SELECT * FROM groupe");
 
@@ -64,6 +69,10 @@ class ApiController extends AbstructController
     // Crud Matiere
     public function matiere_all()
     {
+        if ($this->isAdmin()) {
+            echo json_encode(["error" => "Only admin have access to this page"]);
+            return;
+        }
         $obj = new Matiere();
         $obj->query("SELECT * FROM matiere");
 
@@ -116,6 +125,10 @@ class ApiController extends AbstructController
     // Crud Salle
     public function salle_all()
     {
+        if ($this->isAdmin()) {
+            echo json_encode(["error" => "Only admin have access to this page"]);
+            return;
+        }
         $obj = new Salle();
         $obj->query("SELECT * FROM salle");
 
@@ -125,6 +138,10 @@ class ApiController extends AbstructController
 
     public function salle_aviable()
     {
+        if ($this->isLoggedIn()) {
+            echo json_encode(["error" => "You need to login to access to this ressource"]);
+            return;
+        }
         if (!isset($_GET["jour"])) {
             echo json_encode(["data" => null, "error" => "entrer le jour de la seance"]);
             return;
@@ -196,6 +213,10 @@ class ApiController extends AbstructController
     // Crud Salle
     public function suiver_all()
     {
+        if ($this->isLoggedIn()) {
+            echo json_encode(["error" => "You need to login to access to this ressource"]);
+            return;
+        }
         $obj = new Suiver();
         $where = !$this->isAdmin() ? "WHERE Ensegniant_id = ?" : "";
         $sql = "SELECT suiver.id, ensegniant.id as \"ensegniant_id\", ensegniant.nom as \"ensegniant_nom\", groupe.id as \"groupe_id\", groupe.libelle as \"groupe_libelle\", salle.id as \"salle_id\", salle.libelle as \"salle_libelle\", jour, de, a FROM suiver INNER JOIN ensegniant ON ensegniant.id = suiver.Ensegniant_id INNER JOIN groupe ON suiver.Groupe_id = groupe.id INNER JOIN salle ON salle.id = suiver.Salle_id $where";
@@ -284,6 +305,10 @@ class ApiController extends AbstructController
 
     public function ensegniant_all()
     {
+        if ($this->isAdmin()) {
+            echo json_encode(["error" => "Only admin have access to this page"]);
+            return;
+        }
         $obj = new Suiver();
         $obj->query("SELECT * FROM ensegniant");
 
