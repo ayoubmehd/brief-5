@@ -4,6 +4,7 @@ class AdminController extends AbstructController
 {
     public function add_group()
     {
+        if (!$this->isAdmin()) return $this->redirect("/dashboard/group");
         if (!isset($_POST["add"])) return $this->redirect("/dashboard/group");
         if (!isset($_POST["libelle"])) return $this->redirect("/dashboard/group");
         if (!isset($_POST["effectif"])) return $this->redirect("/dashboard/group");
@@ -21,6 +22,7 @@ class AdminController extends AbstructController
 
     public function delete_group($id)
     {
+        if (!$this->isAdmin()) return $this->redirect("/dashboard/group");
         $group = new Group();
         $group->delete("id = $id");
 
@@ -29,6 +31,7 @@ class AdminController extends AbstructController
 
     public function edit_group($id)
     {
+        if (!$this->isAdmin()) return $this->redirect("/dashboard/group");
         if (!isset($_POST["edit"])) return $this->redirect("/dashboard/group");
         if (!isset($_POST["libelle"])) return $this->redirect("/dashboard/group");
         if (!isset($_POST["effectif"])) return $this->redirect("/dashboard/group");
@@ -47,6 +50,7 @@ class AdminController extends AbstructController
 
     public function add_matiere()
     {
+        if (!$this->isAdmin()) return $this->redirect("/dashboard/group");
         if (!isset($_POST["add"]))
             return $this->redirect("/dashboard/matiere");
         if (!isset($_POST["Matiere_label"]))
@@ -65,6 +69,7 @@ class AdminController extends AbstructController
 
     public function delete_matiere($id)
     {
+        if (!$this->isAdmin()) return $this->redirect("/dashboard/group");
         $obj = new Matiere();
         $obj->delete("id = $id");
 
@@ -73,6 +78,7 @@ class AdminController extends AbstructController
 
     public function edit_matiere($id)
     {
+        if (!$this->isAdmin()) return $this->redirect("/dashboard/group");
         if (!isset($_POST["edit"])) return $this->redirect("/dashboard/matiere");
         if (!isset($_POST["Matiere_label"])) return $this->redirect("/dashboard/matiere");
         if (empty($_POST["Matiere_label"])) return $this->redirect("/dashboard/matiere");
@@ -89,6 +95,7 @@ class AdminController extends AbstructController
 
     public function add_salle()
     {
+        if (!$this->isAdmin()) return $this->redirect("/dashboard/group");
         if (!isset($_POST["add"])) return $this->redirect("/dashboard/salle");
         if (!isset($_POST["libelle"])) return $this->redirect("/dashboard/salle");
         if (!isset($_POST["capacite"])) return $this->redirect("/dashboard/salle");
@@ -106,6 +113,7 @@ class AdminController extends AbstructController
 
     public function delete_salle($id)
     {
+        if (!$this->isAdmin()) return $this->redirect("/dashboard/group");
         $obj = new Salle();
         $obj->delete("id = $id");
 
@@ -114,6 +122,7 @@ class AdminController extends AbstructController
 
     public function edit_salle($id)
     {
+        if (!$this->isAdmin()) return $this->redirect("/dashboard/group");
         if (!isset($_POST["edit"])) return $this->redirect("/dashboard/salle");
         if (!isset($_POST["libelle"])) return $this->redirect("/dashboard/salle");
         if (!isset($_POST["capacite"])) return $this->redirect("/dashboard/salle");
