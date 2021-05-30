@@ -5,6 +5,7 @@ class SuiverController extends AbstructController
 
     public function add_suiver()
     {
+        if (!$this->isLoggedIn()) return $this->redirect("/auth/login");
         if (!isset($_POST["add"])) return $this->redirect("/dashboard/suiver");
         if (!isset($_POST["Ensegniant_id"]) && $this->isAdmin()) return $this->redirect("/dashboard/suiver");
         if (!isset($_POST["Groupe_id"])) return $this->redirect("/dashboard/suiver");
@@ -40,6 +41,7 @@ class SuiverController extends AbstructController
 
     public function delete_suiver($id)
     {
+        if (!$this->isLoggedIn()) return $this->redirect("/auth/login");
         $obj = new Salle();
         $obj->delete("id = $id");
 
@@ -48,6 +50,7 @@ class SuiverController extends AbstructController
 
     public function edit_suiver($id)
     {
+        if (!$this->isLoggedIn()) return $this->redirect("/auth/login");
         if (!isset($_POST["edit"])) return $this->redirect("/dashboard/suiver");
         if (!isset($_POST["Ensegniant_id"]) && $this->isAdmin()) return $this->redirect("/dashboard/suiver");
         if (!isset($_POST["Groupe_id"])) return $this->redirect("/dashboard/suiver");
