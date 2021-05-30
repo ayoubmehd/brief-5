@@ -4,7 +4,7 @@
     <div class="">
         <div class="mb-3">
             <!-- Start Form -->
-            <form id="addForm" action="<?php echo BASE_URL ?>/groupe/add_group" method="POST" class="form-inline">
+            <form id="addForm" action="<?php echo BASE_URL ?>/admin/add_group" method="POST" class="form-inline">
                 <div class="form-group ml-2">
                     <label for="libelle">libelle</label>
                     <input type="text" class="form-control ml-2" name="libelle" id="libelle" placeholder="Libelle">
@@ -19,7 +19,7 @@
             </form>
         </div>
         <div class="d-flex">
-            <form id="editForm" action="<?php echo BASE_URL ?>/groupe/edit_group/%id%" method="post"></form>
+            <form id="editForm" action="<?php echo BASE_URL ?>/admin/edit_group/%id%" method="post"></form>
             <table class="table">
                 <thead class="thead-inverse">
                     <tr>
@@ -41,12 +41,12 @@
                             ?></td>
                         <td>
                             <a href="<?php // echo BASE_URL 
-                                        ?>/groupe/edit_group/<?php // echo $value["id"] 
-                                                                ?>" type="button" class="btn btn-success edit-button">
+                                        ?>/admin/edit_group/<?php // echo $value["id"] 
+                                                            ?>" type="button" class="btn btn-success edit-button">
                                 Edit
                             </a>
                             <a href="<?php // echo BASE_URL 
-                                        ?>/groupe/delete_group/<?php // echo $value["id"] 
+                                        ?>/admin/delete_group/<?php // echo $value["id"] 
                                                                 ?>" type="button" class="btn btn-danger">
                                 Remove
                             </a>
@@ -61,8 +61,8 @@
     <script>
         const endpoint = "group_all";
         const filds = ["libelle", "effectif"];
-        const edit_endpoint = "groupe/edit_group",
-            delete_endpoint = "groupe/delete_group";
+        const edit_endpoint = "edit_group",
+            delete_endpoint = "delete_group";
     </script>
     <script src="<?php echo BASE_URL ?>/assets/js/fetch.js"></script>
     <script src="<?php echo BASE_URL ?>/assets/js/edit.js"></script>

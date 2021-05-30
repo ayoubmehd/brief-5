@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-4">
             <!-- Start Form -->
-            <form id="addForm" action="<?php echo BASE_URL ?>/api/add_matiere" method="POST" class="form">
+            <form id="addForm" action="<?php echo BASE_URL ?>/admin/add_matiere" method="POST" class="form">
                 <div class="form-group">
                     <label for="Matiere_label">Matiere label</label>
                     <input type="text" class="form-control" name="Matiere_label" id="Matiere_label" aria-describedby="emailHelpId" placeholder="">
@@ -15,7 +15,7 @@
             </form>
         </div>
         <div class="col-md-8">
-            <form id="editForm" action="<?php echo BASE_URL ?>/api/edit_matiere/%id%" method="post"></form>
+            <form id="editForm" action="<?php echo BASE_URL ?>/admin/edit_matiere/%id%" method="post"></form>
             <table class="table">
                 <thead class="thead-inverse">
                     <tr>
@@ -34,12 +34,12 @@
                             ?></td>
                         <td>
                             <a href="<?php // echo BASE_URL 
-                                        ?>/api/edit_matiere/<?php // echo $value["id"] 
-                                                            ?>" type="button" class="btn btn-success edit-button">
+                                        ?>/admin/edit_matiere/<?php // echo $value["id"] 
+                                                                ?>" type="button" class="btn btn-success edit-button">
                                 Edit
                             </a>
                             <a href="<?php // echo BASE_URL 
-                                        ?>/api/delete_matiere/<?php // echo $value["id"] 
+                                        ?>/admin/delete_matiere/<?php // echo $value["id"] 
                                                                 ?>" type="button" class="btn btn-danger">
                                 Remove
                             </a>

@@ -4,7 +4,7 @@
     <div class="">
         <div class="mb-3">
             <!-- Start Form -->
-            <form id="addForm" action="<?php echo BASE_URL ?>/api/add_salle" method="POST" class="form-inline">
+            <form id="addForm" action="<?php echo BASE_URL ?>/admin/add_salle" method="POST" class="form-inline">
                 <div class="form-group ml-2">
                     <label for="libelle">Libelle</label>
                     <input type="text" class="form-control ml-2" name="libelle" id="libelle" placeholder="Libelle">
@@ -19,7 +19,7 @@
             </form>
         </div>
         <div class="">
-            <form id="editForm" action="<?php echo BASE_URL ?>/api/edit_salle/%id%" method="post"></form>
+            <form id="editForm" action="<?php echo BASE_URL ?>/admin/edit_salle/%id%" method="post"></form>
             <table class="table">
                 <thead class="thead-inverse">
                     <tr>
@@ -41,13 +41,13 @@
                             ?></td>
                         <td>
                             <a href="<?php // echo BASE_URL 
-                                        ?>/api/edit_salle/<?php // echo $value["id"] 
+                                        ?>/admin/edit_salle/<?php // echo $value["id"] 
                                                             ?>" type="button" class="btn btn-success edit-button">
                                 Edit
                             </a>
                             <a href="<?php // echo BASE_URL 
-                                        ?>/api/delete_salle/<?php // echo $value["id"] 
-                                                            ?>" type="button" class="btn btn-danger">
+                                        ?>/admin/delete_salle/<?php // echo $value["id"] 
+                                                                ?>" type="button" class="btn btn-danger">
                                 Remove
                             </a>
                         </td>

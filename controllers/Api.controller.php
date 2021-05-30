@@ -38,46 +38,6 @@ class ApiController extends AbstructController
         echo json_encode(["data" => $obj->result]);
     }
 
-    public function add_matiere()
-    {
-        if (!isset($_POST["add"]))
-            return $this->redirect("/dashboard/matiere");
-        if (!isset($_POST["Matiere_label"]))
-            return $this->redirect("/dashboard/matiere");
-        if (empty($_POST["Matiere_label"]))
-            return $this->redirect("/dashboard/matiere");
-
-        $Matiere_label = $_POST["Matiere_label"];
-        $obj = new Matiere();
-        $obj->insert([
-            "Matiere_label" => $Matiere_label
-        ]);
-
-        return $this->redirect("/dashboard/matiere");
-    }
-
-    public function delete_matiere($id)
-    {
-        $obj = new Matiere();
-        $obj->delete("id = $id");
-
-        return $this->redirect("/dashboard/matiere");
-    }
-
-    public function edit_matiere($id)
-    {
-        if (!isset($_POST["edit"])) return $this->redirect("/dashboard/matiere");
-        if (!isset($_POST["Matiere_label"])) return $this->redirect("/dashboard/matiere");
-        if (empty($_POST["Matiere_label"])) return $this->redirect("/dashboard/matiere");
-
-        $Matiere_label = $_POST["Matiere_label"];
-        $obj = new Matiere();
-        $obj->update([
-            "Matiere_label" => $Matiere_label
-        ], ["id" => $id]);
-
-        return $this->redirect("/dashboard/matiere");
-    }
 
 
     // Crud Salle
@@ -122,49 +82,6 @@ class ApiController extends AbstructController
         $obj->get_salle_aviable($jour, $de, $a);
 
         echo json_encode(["data" => $obj->result]);
-    }
-
-    public function add_salle()
-    {
-        if (!isset($_POST["add"])) return $this->redirect("/dashboard/salle");
-        if (!isset($_POST["libelle"])) return $this->redirect("/dashboard/salle");
-        if (!isset($_POST["capacite"])) return $this->redirect("/dashboard/salle");
-
-        $libelle = $_POST["libelle"];
-        $capacite = $_POST["capacite"];
-        $obj = new Salle();
-        $obj->insert([
-            "libelle" => $libelle,
-            "capacite" => $capacite,
-        ]);
-
-        return $this->redirect("/dashboard/salle");
-    }
-
-    public function delete_salle($id)
-    {
-        $obj = new Salle();
-        $obj->delete("id = $id");
-
-        return $this->redirect("/dashboard/salle");
-    }
-
-    public function edit_salle($id)
-    {
-        if (!isset($_POST["edit"])) return $this->redirect("/dashboard/salle");
-        if (!isset($_POST["libelle"])) return $this->redirect("/dashboard/salle");
-        if (!isset($_POST["capacite"])) return $this->redirect("/dashboard/salle");
-
-        $libelle = $_POST["libelle"];
-        $capacite = $_POST["capacite"];
-        $obj = new Salle();
-
-        $obj->update([
-            "libelle" => $libelle,
-            "capacite" => $capacite,
-        ], ["id" => $id]);
-
-        return $this->redirect("/dashboard/salle");
     }
 
 
