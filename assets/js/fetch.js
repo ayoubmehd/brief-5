@@ -13,9 +13,9 @@ async function show(parentElm, endpoint, filds, edit_endpoint, delete_endpoint) 
       createTd(elm.id, [{ name: "scope", value: "row" }]),
       ...filds.map(fild => createTd(elm[fild])),
       createTd("", [],
-        createA("Edit", `/api/${edit_endpoint}/${elm.id}`, "btn btn-success edit-button", editButtonsClick),
+        createA("Edit", `/${edit_endpoint}/${elm.id}`, "btn btn-success edit-button", editButtonsClick),
         document.createTextNode(" "),
-        createA("Remove", `/api/${delete_endpoint}/${elm.id}`, "btn btn-danger")
+        createA("Remove", `/${delete_endpoint}/${elm.id}`, "btn btn-danger")
       ),
     ));
   });
