@@ -104,7 +104,7 @@ class ApiController extends AbstructController
 
     public function ensegniant_all()
     {
-        if ($this->isAdmin()) {
+        if (!$this->isAdmin()) {
             echo json_encode(["error" => "Only admin have access to this page"]);
             return;
         }
