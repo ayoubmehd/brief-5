@@ -12,7 +12,7 @@ class ApiController extends AbstructController
     // Crud Group
     public function group_all()
     {
-        if (!$this->isAdmin()) {
+        if (!$this->isLoggedIn()) {
             echo json_encode(["error" => "Only admin have access to this page"]);
             return;
         }

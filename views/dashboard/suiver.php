@@ -6,7 +6,7 @@
             <a name="" id="" class="btn btn-secondary mb-4" href="<?php BASE_URL ?>/dashboard/add_suiver" role="button">Reserver</a>
         </div>
         <div class="w-100">
-            <form id="editForm" action="<?php echo BASE_URL ?>/api/edit_suiver/%id%" method="post"></form>
+            <form id="editForm" action="<?php echo BASE_URL ?>/suiver/edit_suiver/%id%" method="post"></form>
             <table class="table" id="table">
                 <thead class="thead-inverse">
                     <tr>
@@ -43,12 +43,12 @@
                             ?></td>
                         <td>
                             <a href="<?php // echo BASE_URL 
-                                        ?>/api/edit_suiver/<?php // echo $value["id"] 
-                                                            ?>" class="btn btn-success edit-button">
+                                        ?>/suiver/edit_suiver/<?php // echo $value["id"] 
+                                                                ?>" class="btn btn-success edit-button">
                                 Edit
                             </a>
                             <a href="<?php // echo BASE_URL 
-                                        ?>/api/delete_suiver/<?php // echo $value["id"] 
+                                        ?>/suiver/delete_suiver/<?php // echo $value["id"] 
                                                                 ?>" class="btn btn-danger">
                                 Remove
                             </a>

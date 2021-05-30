@@ -3,7 +3,7 @@
 
      <div class="">
          <!-- Start Form -->
-         <form id="addForm" action="<?php echo BASE_URL ?>/api/add_suiver" method="POST" class="form">
+         <form id="addForm" action="<?php echo BASE_URL ?>/suiver/add_suiver" method="POST" class="form">
 
              <div class="form-group">
                  <label for="group">Group</label>
