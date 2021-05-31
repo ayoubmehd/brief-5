@@ -13,3 +13,7 @@ td {
     width: 90%;
   }
 }
+
+select option:disabled {
+  background-color: #ddd;
+}

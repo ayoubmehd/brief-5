@@ -103,13 +103,32 @@ Array.from(editButtons).forEach((elm) => {
 if ("editForm" in window)
   editForm.addEventListener("reset", resetEditForm);
 
-
+de.addEventListener("change", (event) => changeOptionStatus(event)());
+a.addEventListener("change", (event) => changeOptionStatus(event)());
 
 // Event Listener
 async function resetEditForm(event) {
   event.preventDefault();
   const data = await fetchElm("suiver_all");
   displaySuiverAll(data.data, tbody);
+}
+
+function changeOptionStatus(event) {
+  const select = event.target.closest("select");
+  // const selectedIndex = select.selectedIndex;
+  const value = select.value;
+  const aOptions = Array.from(a.options);
+  const deOptions = Array.from(de.options);
+  aOptions.shift();
+  if (select.id === "de") {
+    return function () {
+      aOptions.forEach(elm => elm.disabled = toHours(elm.value).getTime() <= toHours(value).getTime());
+    }
+  }
+
+  return function () {
+    deOptions.forEach(elm => elm.disabled = toHours(elm.value).getTime() >= toHours(value).getTime());
+  }
 }
 
 function clickEditButton(event) {
@@ -122,6 +141,8 @@ function clickEditButton(event) {
     const ensegniant = trArray[1];
     displayEnsegniant(ensegniant);
   }
+
+
 
   // Groupe
   const groupe = trArray[isAdmin ? 2 : 1];
@@ -274,6 +295,7 @@ function displaySuiverAll(data, htmlElm) {
 
 }
 
+
 function getDay(dayId) {
   return jours[dayId]
 }
@@ -287,4 +309,14 @@ function formatTime(timeString = "") {
   date.setHours(...timeArray);
 
   return date.toLocaleTimeString("fr", { hour: '2-digit', minute: '2-digit' });
+}
+
+function toHours(timeString) {
+  const date = new Date();
+
+  const timeArray = timeString.split(":").map(elm => parseInt(elm));
+
+  date.setHours(...timeArray);
+
+  return date;
 }

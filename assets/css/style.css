@@ -7194,3 +7194,6 @@ a.text-dark:hover, a.text-dark:focus {
 td select,
 td input {
   width: 90%; }
+
+select option:disabled {
+  background-color: #ddd; }
