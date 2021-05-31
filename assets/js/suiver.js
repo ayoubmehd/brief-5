@@ -263,9 +263,9 @@ function displaySuiverAll(data, htmlElm) {
         createTd(formatTime(elm.de), [{ name: "data-time", value: elm.de }]),
         createTd(formatTime(elm.a), [{ name: "data-time", value: elm.a }]),
         createTd("", [],
-          createA("Edit", `/api/edit_suiver/${elm.id}`, "btn btn-success edit-button", clickEditButton),
+          createA("Edit", `/suiver/edit_suiver/${elm.id}`, "btn btn-success edit-button", clickEditButton),
           document.createTextNode(" "),
-          createA("Remove", `/api/delete_suiver/${elm.id}`, "btn btn-danger"),
+          createA("Remove", `/suiver/delete_suiver/${elm.id}`, "btn btn-danger"),
         ),
       )
     );
