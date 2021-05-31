@@ -4,7 +4,7 @@
     <div class="">
         <div class="mb-3">
             <!-- Start Form -->
-            <form id="addForm" action="<?php echo BASE_URL ?>/admin/add_group" method="POST" class="form-inline">
+            <form id="addForm" action="<?php echo BASE_URL ?>/admin/add_group" method="POST" class="form-inline justify-content-center">
                 <div class="form-group ml-2">
                     <label for="libelle">libelle</label>
                     <input type="text" class="form-control ml-2" name="libelle" id="libelle" placeholder="Libelle">
