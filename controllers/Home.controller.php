@@ -4,6 +4,6 @@ class HomeController extends AbstructController
 {
     public function index()
     {
-        echo "wow";
+        $this->view("home");
     }
 }
