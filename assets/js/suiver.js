@@ -48,7 +48,7 @@ jours[5] = {
 async function main() {
   const group_all = await fetchElm("group_all");
   let ensegniant_all;
-  if (isAdmin && ensegniant_all)
+  if (isAdmin)
     ensegniant_all = await fetchElm("ensegniant_all");
 
   group_all.data.forEach((element) => {
